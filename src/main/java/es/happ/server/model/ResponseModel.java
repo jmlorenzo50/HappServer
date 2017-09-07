@@ -1,5 +1,7 @@
 package es.happ.server.model;
 
+import java.util.List;
+
 import es.happ.server.types.TypeResponse;
 
 /**
@@ -15,6 +17,13 @@ public class ResponseModel implements HappModel{
 	
 	/** The device model. */
 	private DeviceModel deviceModel;
+	
+	/** The questionary. */
+	private List<QuestionaryModel> questionary; 
+	
+	/** The session questionary. */
+	private SessionQuestionaryModel sessionQuestionary;
+	
 
 	/**
 	 * Gets the type response.
@@ -68,6 +77,42 @@ public class ResponseModel implements HappModel{
 	 */
 	public void setDeviceModel(DeviceModel deviceModel) {
 		this.deviceModel = deviceModel;
+	}
+
+	/**
+	 * Gets the questionary.
+	 *
+	 * @return the questionary
+	 */
+	public List<QuestionaryModel> getQuestionary() {
+		return questionary;
+	}
+
+	/**
+	 * Sets the questionary.
+	 *
+	 * @param questionary the new questionary
+	 */
+	public void setQuestionary(List<QuestionaryModel> questionary) {
+		this.questionary = questionary;
+	}
+
+	/**
+	 * Gets the session questionary.
+	 *
+	 * @return the session questionary
+	 */
+	public SessionQuestionaryModel getSessionQuestionary() {
+		return sessionQuestionary;
+	}
+
+	/**
+	 * Sets the session questionary.
+	 *
+	 * @param sessionQuestionary the new session questionary
+	 */
+	public void setSessionQuestionary(SessionQuestionaryModel sessionQuestionary) {
+		this.sessionQuestionary = sessionQuestionary;
 	}
 
 }

@@ -1,39 +1,24 @@
-package es.happ.server.entity;
+package es.happ.server.model;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
 /**
  * The Class QuestionaryEntity.
  */
-@Entity
-@Table(name="questionary")
-public class QuestionaryEntity implements HappEntity{
+public class QuestionaryModel implements HappModel{
 
 	/** The questionary id. */
-	@Id
-	@GeneratedValue
-	@Column(name="questionary_id", nullable=false, unique=true)
 	private Long questionaryId;
 	
 	/** The description. */
-	@Column(name="description", length=100, nullable=false)
 	private String description;
 	
 	/** The statement. */
-	@Column(name="statement", length=1000, nullable=false)
 	private String statement;
 	
 	/** The questions. */
-	@OneToMany(fetch = javax.persistence.FetchType.LAZY, mappedBy="questionary")
-	private Set<QuestionEntity> questions = new HashSet<QuestionEntity>();
+	private Set<QuestionModel> questions = new HashSet<QuestionModel>();
 
 
 	/**
@@ -95,7 +80,7 @@ public class QuestionaryEntity implements HappEntity{
 	 *
 	 * @return the questions
 	 */
-	public Set<QuestionEntity> getQuestions() {
+	public Set<QuestionModel> getQuestions() {
 		return questions;
 	}
 
@@ -104,7 +89,7 @@ public class QuestionaryEntity implements HappEntity{
 	 *
 	 * @param questions the new questions
 	 */
-	public void setQuestions(Set<QuestionEntity> questions) {
+	public void setQuestions(Set<QuestionModel> questions) {
 		this.questions = questions;
 	}
 	

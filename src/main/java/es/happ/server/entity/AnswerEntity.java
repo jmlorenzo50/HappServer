@@ -14,7 +14,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="answer")
-public class AnswerEntity {
+public class AnswerEntity implements HappEntity{
 	
 	
 	/** The answer id. */
@@ -33,7 +33,7 @@ public class AnswerEntity {
 	
 	/** The Question. */
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="question_id", nullable = false)
+	@JoinColumn(name="questionId", nullable = false)
 	private QuestionEntity question;
 
 	/**

@@ -37,11 +37,11 @@ public class QuestionEntity implements HappEntity {
 	
 	/** The Questionary. */
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="questionary_id", nullable = false)
+	@JoinColumn(name="questionaryId", nullable = false)
 	private QuestionaryEntity questionary;
 
 	/** The answers. */
-	@OneToMany(fetch = javax.persistence.FetchType.LAZY, mappedBy="answerId")
+	@OneToMany(fetch = javax.persistence.FetchType.LAZY, mappedBy="question")
 	private Set<AnswerEntity> answers = new HashSet<AnswerEntity>();
 
 	

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import es.happ.server.model.DeviceModel;
 import es.happ.server.model.ResponseModel;
 import es.happ.server.service.DeviceService;
+import es.happ.server.types.MessagesConstans;
 import es.happ.server.types.TypeResponse;
 
 @org.springframework.web.bind.annotation.RestController
@@ -33,7 +34,7 @@ public class DeviceController {
 			data.setDeviceModel(device);
 		} else {
 			data.setTypeResponse(TypeResponse.ERROR);
-			data.setError("Device not found");
+			data.setError(MessagesConstans.ERROR_DEVICE_NOT_FOUND);
 		}
 		return new ResponseEntity<ResponseModel>(data, HttpStatus.OK);
 	}
@@ -46,7 +47,7 @@ public class DeviceController {
 		DeviceModel device = deviceService.searchDevice(id);
 		if (device != null) {
 			data.setTypeResponse(TypeResponse.ERROR);
-			data.setError("The device can not be added because it is already registered");
+			data.setError(MessagesConstans.ERROR_DEVICE_NOT_ADD_BECAUSE_EXIST);
 			data.setDeviceModel(device);
 		} else {
 			device = deviceService.addDevice(id);
@@ -55,7 +56,7 @@ public class DeviceController {
 				data.setDeviceModel(device);
 			} else {
 				data.setTypeResponse(TypeResponse.ERROR);
-				data.setError("The device can not be added and we don't know the cause");
+				data.setError(MessagesConstans.ERROR_DEVICE_NOT_ADD);
 			}
 		}
 		return new ResponseEntity<ResponseModel>(data, HttpStatus.OK);
