@@ -32,7 +32,7 @@ public class QuestionaryEntity implements HappEntity{
 	private String statement;
 	
 	/** The questions. */
-	@OneToMany(fetch = javax.persistence.FetchType.LAZY, mappedBy="questionary")
+	@OneToMany(fetch = javax.persistence.FetchType.LAZY, mappedBy="questionId")
 	private Set<QuestionEntity> questions = new HashSet<QuestionEntity>();
 
 
