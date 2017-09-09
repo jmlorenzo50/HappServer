@@ -4,6 +4,7 @@ import java.util.List;
 
 import es.happ.server.types.TypeResponse;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class ResponseModel.
  */
@@ -23,6 +24,9 @@ public class ResponseModel implements HappModel{
 	
 	/** The session questionary. */
 	private SessionQuestionaryModel sessionQuestionary;
+	
+	/** The has scheduled task. */
+	private Boolean hasScheduledTask;
 	
 
 	/**
@@ -113,6 +117,24 @@ public class ResponseModel implements HappModel{
 	 */
 	public void setSessionQuestionary(SessionQuestionaryModel sessionQuestionary) {
 		this.sessionQuestionary = sessionQuestionary;
+	}
+
+	/**
+	 * Checks if is checks for scheduled task.
+	 *
+	 * @return true, if is checks for scheduled task
+	 */
+	public Boolean isHasScheduledTask() {
+		return hasScheduledTask;
+	}
+
+	/**
+	 * Sets the checks for scheduled task.
+	 *
+	 * @param hasScheduledTask the new checks for scheduled task
+	 */
+	public void setHasScheduledTask(Boolean hasScheduledTask) {
+		this.hasScheduledTask = hasScheduledTask;
 	}
 
 }

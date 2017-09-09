@@ -69,7 +69,4 @@ public class QuestionayController {
 		return data;
 	}
 	
-
-	
-	
 }

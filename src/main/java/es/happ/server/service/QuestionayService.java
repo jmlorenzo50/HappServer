@@ -2,7 +2,6 @@ package es.happ.server.service;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,22 +11,33 @@ import org.springframework.stereotype.Service;
 import es.happ.server.converter.QuestionaryConverter;
 import es.happ.server.converter.SessionQuestionaryConverter;
 import es.happ.server.entity.AnswerEntity;
+import es.happ.server.entity.DeviceEntity;
 import es.happ.server.entity.QuestionaryEntity;
+import es.happ.server.entity.ScheduledTaskEntity;
+import es.happ.server.entity.ScheduledTaskQuestionaryEntity;
 import es.happ.server.entity.SessionAnswerEntity;
 import es.happ.server.entity.SessionQuestionaryEntity;
-import es.happ.server.model.DeviceModel;
 import es.happ.server.model.QuestionaryModel;
 import es.happ.server.model.SessionQuestionaryModel;
 import es.happ.server.repositoy.AnswerRepository;
+import es.happ.server.repositoy.DeviceRepository;
 import es.happ.server.repositoy.QuestionaryRepository;
+import es.happ.server.repositoy.ScheduledTaskQuestionaryRepository;
+import es.happ.server.repositoy.ScheduledTaskRepository;
 import es.happ.server.repositoy.SessionAnswerRepository;
 import es.happ.server.repositoy.SessionQuestionaryRepository;
+import es.happ.server.types.TypeTask;
+import es.happ.server.util.DateUtil;
 
 /**
  * The Class QuestionayService.
  */
 @Service("questionayService")
 public class QuestionayService {
+	
+	@Autowired
+	@Qualifier("dateUtil")
+	private DateUtil dateUtil;
 	
 	/** The questionary repository. */
 	@Autowired
@@ -49,17 +59,20 @@ public class QuestionayService {
 	@Qualifier("sessionQuestionaryConverter")
 	private SessionQuestionaryConverter sessionQuestionaryConverter;
 	
+	/** The session answer repository. */
 	@Autowired
 	@Qualifier("sessionAnswerRepository")
 	private SessionAnswerRepository sessionAnswerRepository;
 	
+	/** The answer repository. */
 	@Autowired
 	@Qualifier("answerRepository")
 	private AnswerRepository answerRepository;
 
+	/** The device repository. */
 	@Autowired
-	@Qualifier("deviceService")
-	private DeviceService deviceService;
+	@Qualifier("deviceRepository")
+	private DeviceRepository deviceRepository;
 	
 	/**
 	 * Gets the all questionaries.
@@ -84,12 +97,12 @@ public class QuestionayService {
 	 */
 	public SessionQuestionaryModel createNewSession(String androidId) {
 		SessionQuestionaryModel model = null;
-		DeviceModel device = deviceService.searchDevice(androidId);
-		if (device != null) {
+		DeviceEntity deviceEntity = deviceRepository.findByandroidId(androidId);
+		if (deviceEntity != null) {
 			SessionQuestionaryEntity entity = sessionQuestionaryRepository.findByAndroidIdAndFinished(androidId, Boolean.FALSE);
 			if (entity == null) {
 				entity = new SessionQuestionaryEntity();
-				entity.setDateSession(new Timestamp(new Date().getTime()));
+				entity.setDateSession(dateUtil.now());
 				entity.setFinished(Boolean.FALSE);
 				entity.setAndroidId(androidId);
 				entity = sessionQuestionaryRepository.save(entity);
@@ -125,10 +138,10 @@ public class QuestionayService {
 	public SessionQuestionaryModel answerSession(String androidId, Long sessionAnswerId, Long answerId) {
 		SessionQuestionaryModel model = null;
 
-		DeviceModel device = deviceService.searchDevice(androidId);
+		DeviceEntity deviceEntity = deviceRepository.findByandroidId(androidId);
 		SessionQuestionaryEntity sessionQuestionaryEntity = sessionQuestionaryRepository.findBySessionId(sessionAnswerId);
 		AnswerEntity answerEntity = answerRepository.findByAnswerId(answerId);;
-		if (device == null) {
+		if (deviceEntity == null) {
 			model = null;
 		} else if (sessionQuestionaryEntity == null) {
 			model = null;
@@ -152,5 +165,5 @@ public class QuestionayService {
 		return model;
 	}
 	
-
+	
 }

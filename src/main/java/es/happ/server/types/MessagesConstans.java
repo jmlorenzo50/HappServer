@@ -1,5 +1,6 @@
 package es.happ.server.types;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class MessagesConstans.
  */
@@ -19,5 +20,8 @@ public class MessagesConstans {
 
 	/** The Constant ERROR_QUESTION_NOT_ANSWER. */
 	public static final String ERROR_QUESTION_NOT_ANSWER = "The question can not be answered";
+
+	/** The Constant ERROR_DEVICE_NOT_UPDATE. */
+	public static final String ERROR_DEVICE_NOT_UPDATE = "The device can not be updated and we don't know the cause";
 
 }

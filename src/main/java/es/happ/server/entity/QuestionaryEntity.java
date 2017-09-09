@@ -34,8 +34,15 @@ public class QuestionaryEntity implements HappEntity{
 	/** The questions. */
 	@OneToMany(fetch = javax.persistence.FetchType.LAZY, mappedBy="questionary")
 	private Set<QuestionEntity> questions = new HashSet<QuestionEntity>();
+	
+	/** The statement. */
+	@Column(name="scheduled_pre")
+	private Boolean scheduledPre;
 
-
+	/** The statement. */
+	@Column(name="scheduled_post")
+	private Boolean scheduledPost;
+	
 	/**
 	 * Gets the questionary id.
 	 *
@@ -106,6 +113,42 @@ public class QuestionaryEntity implements HappEntity{
 	 */
 	public void setQuestions(Set<QuestionEntity> questions) {
 		this.questions = questions;
+	}
+
+	/**
+	 * Gets the scheduled pre.
+	 *
+	 * @return the scheduled pre
+	 */
+	public Boolean getScheduledPre() {
+		return scheduledPre;
+	}
+
+	/**
+	 * Sets the scheduled pre.
+	 *
+	 * @param scheduledPre the new scheduled pre
+	 */
+	public void setScheduledPre(Boolean scheduledPre) {
+		this.scheduledPre = scheduledPre;
+	}
+
+	/**
+	 * Gets the scheduled post.
+	 *
+	 * @return the scheduled post
+	 */
+	public Boolean getScheduledPost() {
+		return scheduledPost;
+	}
+
+	/**
+	 * Sets the scheduled post.
+	 *
+	 * @param scheduledPost the new scheduled post
+	 */
+	public void setScheduledPost(Boolean scheduledPost) {
+		this.scheduledPost = scheduledPost;
 	}
 	
 	
