@@ -1,0 +1,10 @@
+
+################
+# Device       #
+################
+
+# Search
+http://127.0.0.1:8080/happ/device/search?id=6244f1aa4ef72ab5
+
+# Update 
+http://127.0.0.1:8080/happ/device/update?id=6244f1aa4ef72ab5&age=21&gender=WOMAN&maritalstatus=MARRIED&codeEducationLevel=BAS

@@ -4,11 +4,17 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class DeviceEntity.
+ * @author jorge
+ * @version 1.0
  */
 @Entity
 @Table(name="device")
@@ -30,6 +36,15 @@ public class DeviceEntity implements HappEntity {
 	/** The date insert. */
 	@Column(name="date_insert", nullable=true)
 	private Timestamp dateInsert;
+	
+	/** The marital status. */
+	@Column(name="marital_status", length=10, nullable=true)
+	private String maritalStatus;
+	
+	/** The education level. */
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(columnDefinition="code_education_level", referencedColumnName ="code", nullable = true)
+	private EducationLevelEntity educationLevel;
 	
 	/**
 	 * Instantiates a new device entity.
@@ -108,6 +123,42 @@ public class DeviceEntity implements HappEntity {
 	 */
 	public void setDateInsert(Timestamp dateInsert) {
 		this.dateInsert = dateInsert;
+	}
+
+	/**
+	 * Gets the marital status.
+	 *
+	 * @return the marital status
+	 */
+	public String getMaritalStatus() {
+		return maritalStatus;
+	}
+
+	/**
+	 * Sets the marital status.
+	 *
+	 * @param maritalStatus the new marital status
+	 */
+	public void setMaritalStatus(String maritalStatus) {
+		this.maritalStatus = maritalStatus;
+	}
+
+	/**
+	 * Gets the education level.
+	 *
+	 * @return the education level
+	 */
+	public EducationLevelEntity getEducationLevel() {
+		return educationLevel;
+	}
+
+	/**
+	 * Sets the education level.
+	 *
+	 * @param educationLevel the new education level
+	 */
+	public void setEducationLevel(EducationLevelEntity educationLevel) {
+		this.educationLevel = educationLevel;
 	}
 	
 	

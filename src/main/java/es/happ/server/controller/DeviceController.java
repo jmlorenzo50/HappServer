@@ -12,6 +12,7 @@ import es.happ.server.model.DeviceModel;
 import es.happ.server.model.ResponseModel;
 import es.happ.server.service.DeviceService;
 import es.happ.server.types.Gender;
+import es.happ.server.types.MaritalStatus;
 import es.happ.server.types.MessagesConstans;
 import es.happ.server.types.TypeResponse;
 
@@ -92,7 +93,9 @@ public class DeviceController {
 	public ResponseEntity<ResponseModel> add(
 						@RequestParam(name="id",required=true) String id,
 						@RequestParam(name="age",required=true) int age,
-						@RequestParam(name="gender",required=true) String gender) {
+						@RequestParam(name="gender",required=true) String gender,
+						@RequestParam(name="maritalstatus",required=true) String maritalStatus,
+						@RequestParam(name="codeEducationLevel",required=true) String codeEducationLevel) {
 		ResponseModel data = new ResponseModel();
 		
 		DeviceModel device = deviceService.searchDevice(id);
@@ -101,7 +104,12 @@ public class DeviceController {
 			data.setError(MessagesConstans.ERROR_DEVICE_NOT_FOUND);
 			data.setDeviceModel(device);
 		} else {
-			device = deviceService.updateDevice(id, age, Gender.valueOf(gender));
+			device = deviceService.updateDevice(id, 
+												age, 
+												Gender.valueOf(gender), 
+												MaritalStatus.valueOf(maritalStatus), 
+												codeEducationLevel);
+			
 			if (device != null) {
 				data.setTypeResponse(TypeResponse.OK);
 				data.setDeviceModel(device);

@@ -3,9 +3,12 @@ package es.happ.server.model;
 import java.sql.Timestamp;
 
 import es.happ.server.types.Gender;
+import es.happ.server.types.MaritalStatus;
 
 /**
  * The Class DeviceModel.
+ * @author jorge
+ * @version 1.0
  */
 public class DeviceModel implements HappModel{
 	
@@ -20,6 +23,12 @@ public class DeviceModel implements HappModel{
 	
 	/** The date insert. */
 	private Timestamp dateInsert;
+	
+	/** The marital status. */
+	private MaritalStatus maritalStatus;
+	
+	/** The education level model. */
+	private EducationLevelModel educationLevelModel;
 	
 	/**
 	 * Instantiates a new device model.
@@ -110,6 +119,42 @@ public class DeviceModel implements HappModel{
 	 */
 	public void setDateInsert(Timestamp dateInsert) {
 		this.dateInsert = dateInsert;
+	}
+
+	/**
+	 * Gets the marital status.
+	 *
+	 * @return the marital status
+	 */
+	public MaritalStatus getMaritalStatus() {
+		return maritalStatus;
+	}
+
+	/**
+	 * Sets the marital status.
+	 *
+	 * @param maritalStatus the new marital status
+	 */
+	public void setMaritalStatus(MaritalStatus maritalStatus) {
+		this.maritalStatus = maritalStatus;
+	}
+
+	/**
+	 * Gets the education level model.
+	 *
+	 * @return the education level model
+	 */
+	public EducationLevelModel getEducationLevelModel() {
+		return educationLevelModel;
+	}
+
+	/**
+	 * Sets the education level model.
+	 *
+	 * @param educationLevelModel the new education level model
+	 */
+	public void setEducationLevelModel(EducationLevelModel educationLevelModel) {
+		this.educationLevelModel = educationLevelModel;
 	}
 	
 

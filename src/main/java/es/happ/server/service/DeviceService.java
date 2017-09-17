@@ -10,15 +10,18 @@ import org.springframework.stereotype.Service;
 
 import es.happ.server.converter.DeviceConverter;
 import es.happ.server.entity.DeviceEntity;
+import es.happ.server.entity.EducationLevelEntity;
 import es.happ.server.entity.QuestionaryEntity;
 import es.happ.server.entity.ScheduledTaskEntity;
 import es.happ.server.entity.ScheduledTaskQuestionaryEntity;
 import es.happ.server.model.DeviceModel;
 import es.happ.server.repositoy.DeviceRepository;
+import es.happ.server.repositoy.EducationLevelRepository;
 import es.happ.server.repositoy.QuestionaryRepository;
 import es.happ.server.repositoy.ScheduledTaskQuestionaryRepository;
 import es.happ.server.repositoy.ScheduledTaskRepository;
 import es.happ.server.types.Gender;
+import es.happ.server.types.MaritalStatus;
 import es.happ.server.types.TypeTask;
 import es.happ.server.util.DateUtil;
 
@@ -43,7 +46,6 @@ public class DeviceService {
 	@Qualifier("deviceConverter")
 	private DeviceConverter deviceConverter;
 	
-	
 	/** The questionary repository. */
 	@Autowired
 	@Qualifier("questionaryRepository")
@@ -57,6 +59,10 @@ public class DeviceService {
 	@Autowired
 	@Qualifier("scheduledTaskQuestionaryRepository")
 	private ScheduledTaskQuestionaryRepository scheduledTaskQuestionaryRepository;
+	
+	@Autowired
+	@Qualifier("educationLevelRepository")
+	private EducationLevelRepository educationLevelRepository;
 
 	
 	/**
@@ -136,16 +142,25 @@ public class DeviceService {
 	 * @param androidId the android id
 	 * @param age the age
 	 * @param gender the gender
+	 * @param maritalStatus the maritalStatus 
+	 * @param codeEducationLevel the codeEducationLevel
 	 * @return the device model
 	 */
-	public DeviceModel updateDevice(String androidId, int age, Gender gender) {
+	public DeviceModel updateDevice(String androidId, int age, Gender gender, MaritalStatus maritalStatus, String codeEducationLevel) {
 		DeviceModel deviceModel = searchDevice(androidId);
 		if (deviceModel != null) {
-			DeviceEntity deviceEntity = (DeviceEntity) deviceConverter.toEntity(deviceModel);
-			deviceEntity.setGender(gender.name());
-			deviceEntity.setAge(age);
-			deviceEntity = deviceRepository.save(deviceEntity);
-			deviceModel = (DeviceModel) deviceConverter.toModel(deviceEntity);
+			EducationLevelEntity educationLevelEntity=educationLevelRepository.findByCode(codeEducationLevel);
+			if (educationLevelEntity != null) {
+				
+				DeviceEntity deviceEntity = (DeviceEntity) deviceConverter.toEntity(deviceModel);
+				deviceEntity.setGender(gender.name());
+				deviceEntity.setAge(age);
+				deviceEntity.setMaritalStatus(maritalStatus.name());
+				deviceEntity.setEducationLevel(educationLevelEntity);
+				
+				deviceEntity = deviceRepository.save(deviceEntity);
+				deviceModel = (DeviceModel) deviceConverter.toModel(deviceEntity);
+			}
 		}
 		return deviceModel;
 	}
