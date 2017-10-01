@@ -1,6 +1,5 @@
 package es.happ.server.service;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +12,6 @@ import es.happ.server.converter.SessionQuestionaryConverter;
 import es.happ.server.entity.AnswerEntity;
 import es.happ.server.entity.DeviceEntity;
 import es.happ.server.entity.QuestionaryEntity;
-import es.happ.server.entity.ScheduledTaskEntity;
-import es.happ.server.entity.ScheduledTaskQuestionaryEntity;
 import es.happ.server.entity.SessionAnswerEntity;
 import es.happ.server.entity.SessionQuestionaryEntity;
 import es.happ.server.model.QuestionaryModel;
@@ -22,11 +19,8 @@ import es.happ.server.model.SessionQuestionaryModel;
 import es.happ.server.repositoy.AnswerRepository;
 import es.happ.server.repositoy.DeviceRepository;
 import es.happ.server.repositoy.QuestionaryRepository;
-import es.happ.server.repositoy.ScheduledTaskQuestionaryRepository;
-import es.happ.server.repositoy.ScheduledTaskRepository;
 import es.happ.server.repositoy.SessionAnswerRepository;
 import es.happ.server.repositoy.SessionQuestionaryRepository;
-import es.happ.server.types.TypeTask;
 import es.happ.server.util.DateUtil;
 
 /**
@@ -164,6 +158,7 @@ public class QuestionayService {
 		}
 		return model;
 	}
+	
 	
 	
 }

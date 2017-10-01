@@ -1,6 +1,7 @@
 package es.happ.server.repositoy;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -21,5 +22,12 @@ public interface EducationLevelRepository extends JpaRepository<EducationLevelEn
 	 * @return the education level entity
 	 */
 	public abstract EducationLevelEntity findByCode(String code);
-
+	
+	
+	/**
+	 * Find all order by ordered.
+	 *
+	 * @return the list
+	 */
+	public abstract List<EducationLevelEntity> findAllByOrderByOrderedAsc();
 }

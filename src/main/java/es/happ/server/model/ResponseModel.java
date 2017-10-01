@@ -28,6 +28,9 @@ public class ResponseModel implements HappModel{
 	/** The has scheduled task. */
 	private Boolean hasScheduledTask;
 	
+	/** The education levels. */
+	private List<EducationLevelModel> educationLevels;
+	
 
 	/**
 	 * Gets the type response.
@@ -135,6 +138,24 @@ public class ResponseModel implements HappModel{
 	 */
 	public void setHasScheduledTask(Boolean hasScheduledTask) {
 		this.hasScheduledTask = hasScheduledTask;
+	}
+
+	/**
+	 * Gets the education levels.
+	 *
+	 * @return the education levels
+	 */
+	public List<EducationLevelModel> getEducationLevels() {
+		return educationLevels;
+	}
+
+	/**
+	 * Sets the education levels.
+	 *
+	 * @param educationLevels the new education levels
+	 */
+	public void setEducationLevels(List<EducationLevelModel> educationLevels) {
+		this.educationLevels = educationLevels;
 	}
 
 }
