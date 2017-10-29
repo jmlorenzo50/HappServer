@@ -121,6 +121,41 @@ public class QuestionayService {
 		return model;
 	}
 
+
+	/**
+	 * Find session questionary by android id.
+	 *
+	 * @param sessionAnswerId the session answer id
+	 * @return the session questionary model
+	 */
+	public SessionQuestionaryModel findFirstSessionByAndroidId(String androidIdId) {
+		List<SessionQuestionaryEntity> entity = sessionQuestionaryRepository.findByAndroidIdOrderByDateSessionAsc(androidIdId);
+		
+		SessionQuestionaryModel model = null;
+		for (SessionQuestionaryEntity sessionQuestionaryEntity : entity) {
+			if (model == null && sessionQuestionaryEntity.getDateSession().getTime() <= dateUtil.now().getTime()) {
+				model = (SessionQuestionaryModel) sessionQuestionaryConverter.toModel(sessionQuestionaryEntity);
+			}
+		}
+		return model;
+	}
+	
+
+	/**
+	 * Find a questinçonary
+	 * @return
+	 */
+	public QuestionaryModel findQuestionary(Long questionaryId) {
+		QuestionaryModel model = null;
+		QuestionaryEntity questionaryEntity = questionaryRepository.findByQuestionaryId(questionaryId);
+		if (questionaryEntity != null) {
+			model = (QuestionaryModel) questionaryConverter.toModel(questionaryEntity);
+		}
+		return model;
+	}
+
+
+	
 	/**
 	 * Answer session.
 	 *

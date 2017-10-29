@@ -1,6 +1,8 @@
 package es.happ.server.model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -18,7 +20,7 @@ public class QuestionModel implements HappModel {
 	private String statement;
 	
 	/** The answers. */
-	private Set<AnswerModel> answers = new HashSet<AnswerModel>();
+	private List<AnswerModel> answers = new ArrayList<AnswerModel>();
 
 	
 	/**
@@ -87,7 +89,7 @@ public class QuestionModel implements HappModel {
 	 *
 	 * @return the answers
 	 */
-	public Set<AnswerModel> getAnswers() {
+	public List<AnswerModel> getAnswers() {
 		return answers;
 	}
 
@@ -96,7 +98,7 @@ public class QuestionModel implements HappModel {
 	 *
 	 * @param answers the new answers
 	 */
-	public void setAnswers(Set<AnswerModel> answers) {
+	public void setAnswers(List<AnswerModel> answers) {
 		this.answers = answers;
 	}
 	

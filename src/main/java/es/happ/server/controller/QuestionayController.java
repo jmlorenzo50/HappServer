@@ -1,11 +1,15 @@
 package es.happ.server.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import es.happ.server.model.QuestionaryModel;
 import es.happ.server.model.ResponseModel;
 import es.happ.server.service.DeviceService;
 import es.happ.server.service.QuestionayService;
@@ -45,6 +49,30 @@ public class QuestionayController {
 		}
 		return data;
 	}
+	
+	@GetMapping("/session/forAnswer")
+	public ResponseModel forAnswer(@RequestParam(name="id",required=true) String androidId) {
+		ResponseModel data = new ResponseModel();
+		if (deviceService.searchDevice(androidId) == null) {
+			data.setTypeResponse(TypeResponse.ERROR);
+			data.setError(MessagesConstans.ERROR_DEVICE_NOT_FOUND);
+		} else {
+			data.setTypeResponse(TypeResponse.OK);
+			data.setFirstSessionQuestionary(questionayService.findFirstSessionByAndroidId(androidId));
+			
+			if (data.getFirstSessionQuestionary() != null) {
+				Long questionaryId = data.getFirstSessionQuestionary().getSessionId();
+				QuestionaryModel qm = questionayService.findQuestionary(questionaryId);
+				List<QuestionaryModel> list = new ArrayList<>();
+				list.add(qm);
+				data.setQuestionary(list);
+			}
+		}
+		return data;
+	}
+	
+	
+	
 	
 	@GetMapping("/session/answer")
 	public ResponseModel answerSession(

@@ -16,3 +16,21 @@ http://127.0.0.1:8080/happ/device/update?id=6244f1aa4ef72ab5&age=21&gender=WOMAN
 
 # Get alls EducationLevels
 http://127.0.0.1:8080/happ/envirotment/educationLevels
+
+
+################
+# Questionary  #
+################
+
+# Get all questionary
+http://127.0.0.1:8080/happ/questionary/all
+
+# Creat new session
+http://127.0.0.1:8080/happ/questionary/session/new?id=6244f1aa4ef72ab5
+
+# Find First Session By AndroidId forAnswer
+http://127.0.0.1:8080/happ/questionary/session/forAnswer?id=6244f1aa4ef72ab5
+
+# Answer session
+http://127.0.0.1:8080/happ/questionary/session/answer?id=&session=&answer=
+

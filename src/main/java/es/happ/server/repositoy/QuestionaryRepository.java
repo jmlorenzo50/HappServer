@@ -26,5 +26,13 @@ public interface QuestionaryRepository extends JpaRepository<QuestionaryEntity, 
 	 * @return the list
 	 */
 	public List<QuestionaryEntity> findByScheduledPostIsNotNull();
+	
+	
+	/**
+	 * Find questionary by questionaryId
+	 * @param questionaryId  Cuestionary's identification
+	 * @return Questionary
+	 */
+	public QuestionaryEntity findByQuestionaryId(Long questionaryId);
 
 }

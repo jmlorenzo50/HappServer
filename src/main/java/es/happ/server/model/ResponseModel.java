@@ -25,6 +25,9 @@ public class ResponseModel implements HappModel{
 	/** The session questionary. */
 	private SessionQuestionaryModel sessionQuestionary;
 	
+	/** The first session questionary. */
+	private SessionQuestionaryModel firstSessionQuestionary;
+	
 	/** The has scheduled task. */
 	private Boolean hasScheduledTask;
 	
@@ -156,6 +159,24 @@ public class ResponseModel implements HappModel{
 	 */
 	public void setEducationLevels(List<EducationLevelModel> educationLevels) {
 		this.educationLevels = educationLevels;
+	}
+
+	/**
+	 * Gets the first session questionary.
+	 *
+	 * @return the first session questionary
+	 */
+	public SessionQuestionaryModel getFirstSessionQuestionary() {
+		return firstSessionQuestionary;
+	}
+
+	/**
+	 * Sets the first session questionary.
+	 *
+	 * @param firstSessionQuestionary the new first session questionary
+	 */
+	public void setFirstSessionQuestionary(SessionQuestionaryModel firstSessionQuestionary) {
+		this.firstSessionQuestionary = firstSessionQuestionary;
 	}
 
 }

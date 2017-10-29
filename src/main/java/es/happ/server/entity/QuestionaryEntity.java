@@ -1,13 +1,14 @@
 package es.happ.server.entity;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 /**
@@ -33,7 +34,8 @@ public class QuestionaryEntity implements HappEntity{
 	
 	/** The questions. */
 	@OneToMany(fetch = javax.persistence.FetchType.LAZY, mappedBy="questionary")
-	private Set<QuestionEntity> questions = new HashSet<QuestionEntity>();
+	@OrderBy("questionId")
+	private List<QuestionEntity> questions = new ArrayList<QuestionEntity>();
 	
 	/** The statement. */
 	@Column(name="scheduled_pre")
@@ -102,7 +104,7 @@ public class QuestionaryEntity implements HappEntity{
 	 *
 	 * @return the questions
 	 */
-	public Set<QuestionEntity> getQuestions() {
+	public List<QuestionEntity> getQuestions() {
 		return questions;
 	}
 
@@ -111,7 +113,7 @@ public class QuestionaryEntity implements HappEntity{
 	 *
 	 * @param questions the new questions
 	 */
-	public void setQuestions(Set<QuestionEntity> questions) {
+	public void setQuestions(List<QuestionEntity> questions) {
 		this.questions = questions;
 	}
 

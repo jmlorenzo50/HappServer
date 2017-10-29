@@ -1,7 +1,7 @@
 package es.happ.server.converter;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -39,8 +39,8 @@ public class QuestionConverter implements HappConverter{
 		entity.setStatement(questionModel.getStatement());
 		entity.setQuestionary(null);
 		
-		Set<AnswerEntity> answers = new HashSet<AnswerEntity>();
-		Set<AnswerModel> la = questionModel.getAnswers();
+		List<AnswerEntity> answers = new ArrayList<AnswerEntity>();
+		List<AnswerModel> la = questionModel.getAnswers();
 		for (AnswerModel answerModel : la) {
 			AnswerEntity ae = (AnswerEntity) answerConverter.toEntity(answerModel);
 			ae.setQuestion(entity);
@@ -63,8 +63,8 @@ public class QuestionConverter implements HappConverter{
 		model.setDescription(questionEntity.getDescription());
 		model.setStatement(questionEntity.getStatement());
 		
-		Set<AnswerModel> answers = new HashSet<AnswerModel>();
-		Set<AnswerEntity> le = questionEntity.getAnswers();
+		List<AnswerModel> answers = new ArrayList<AnswerModel>();
+		List<AnswerEntity> le = questionEntity.getAnswers();
 		for (AnswerEntity answerEntity : le) {
 			AnswerModel am = (AnswerModel) answerConverter.toModel(answerEntity);
 			answers.add(am);

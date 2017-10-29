@@ -1,7 +1,7 @@
 package es.happ.server.entity;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 /**
@@ -42,7 +43,8 @@ public class QuestionEntity implements HappEntity {
 
 	/** The answers. */
 	@OneToMany(fetch = javax.persistence.FetchType.LAZY, mappedBy="question")
-	private Set<AnswerEntity> answers = new HashSet<AnswerEntity>();
+	@OrderBy("answerId ASC")
+	private List<AnswerEntity> answers = new ArrayList<AnswerEntity>();
 
 	
 	/**
@@ -129,7 +131,7 @@ public class QuestionEntity implements HappEntity {
 	 *
 	 * @return the answers
 	 */
-	public Set<AnswerEntity> getAnswers() {
+	public List<AnswerEntity> getAnswers() {
 		return answers;
 	}
 
@@ -138,7 +140,7 @@ public class QuestionEntity implements HappEntity {
 	 *
 	 * @param answers the new answers
 	 */
-	public void setAnswers(Set<AnswerEntity> answers) {
+	public void setAnswers(List<AnswerEntity> answers) {
 		this.answers = answers;
 	}
 	

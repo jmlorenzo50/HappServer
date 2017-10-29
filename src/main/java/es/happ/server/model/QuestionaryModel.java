@@ -1,7 +1,7 @@
 package es.happ.server.model;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The Class QuestionaryEntity.
@@ -18,7 +18,7 @@ public class QuestionaryModel implements HappModel{
 	private String statement;
 	
 	/** The questions. */
-	private Set<QuestionModel> questions = new HashSet<QuestionModel>();
+	private List<QuestionModel> questions = new ArrayList<QuestionModel>();
 
 
 	/**
@@ -80,7 +80,7 @@ public class QuestionaryModel implements HappModel{
 	 *
 	 * @return the questions
 	 */
-	public Set<QuestionModel> getQuestions() {
+	public List<QuestionModel> getQuestions() {
 		return questions;
 	}
 
@@ -89,7 +89,7 @@ public class QuestionaryModel implements HappModel{
 	 *
 	 * @param questions the new questions
 	 */
-	public void setQuestions(Set<QuestionModel> questions) {
+	public void setQuestions(List<QuestionModel> questions) {
 		this.questions = questions;
 	}
 	

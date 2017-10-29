@@ -1,6 +1,7 @@
 package es.happ.server.repositoy;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -29,5 +30,12 @@ public interface SessionQuestionaryRepository extends JpaRepository<SessionQuest
 	 * @return the session questionary entity
 	 */
 	public abstract SessionQuestionaryEntity findBySessionId(Long sessionId);
+
+	/**
+	 * 
+	 * @param androidIdId
+	 * @return
+	 */
+	public abstract List<SessionQuestionaryEntity> findByAndroidIdOrderByDateSessionAsc(String androidId);
 
 }
