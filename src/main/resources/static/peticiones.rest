@@ -32,5 +32,6 @@ http://127.0.0.1:8080/happ/questionary/session/new?id=6244f1aa4ef72ab5
 http://127.0.0.1:8080/happ/questionary/session/forAnswer?id=6244f1aa4ef72ab5
 
 # Answer session
-http://127.0.0.1:8080/happ/questionary/session/answer?id=&session=&answer=
+http://127.0.0.1:8080/happ/questionary/session/answer?id=6244f1aa4ef72ab5&session=1&answer=2
+http://127.0.0.1:8080/happ/questionary/session/answer?id=6244f1aa4ef72ab5&session=1&answer=8
 

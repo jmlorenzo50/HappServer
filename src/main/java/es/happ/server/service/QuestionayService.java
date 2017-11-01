@@ -133,7 +133,9 @@ public class QuestionayService {
 		
 		SessionQuestionaryModel model = null;
 		for (SessionQuestionaryEntity sessionQuestionaryEntity : entity) {
-			if (model == null && sessionQuestionaryEntity.getDateSession().getTime() <= dateUtil.now().getTime()) {
+			if (model == null 
+					&& sessionQuestionaryEntity.getDateSession().getTime() <= dateUtil.now().getTime() 
+					&& sessionQuestionaryEntity.getFinished() != Boolean.TRUE) {
 				model = (SessionQuestionaryModel) sessionQuestionaryConverter.toModel(sessionQuestionaryEntity);
 			}
 		}
@@ -179,15 +181,31 @@ public class QuestionayService {
 		} else {
 			
 			// Comprueba que no tenga otra respuesta
-			
-			SessionAnswerEntity sessionAnswer = new SessionAnswerEntity();
-			sessionAnswer.setSessionCuestionary(sessionQuestionaryEntity);
-			sessionAnswer.setQuestionaryId(answerEntity.getQuestion().getQuestionary().getQuestionaryId());
-			sessionAnswer.setQuestionId(answerEntity.getQuestion().getQuestionId());
-			sessionAnswer.setAnswerId(answerId);
-			sessionAnswer = sessionAnswerRepository.save(sessionAnswer);
+			boolean exist = false;
+			List<SessionAnswerEntity> answers = sessionAnswerRepository.findBySessionId(sessionQuestionaryEntity.getSessionId());
+			for (SessionAnswerEntity sessionAnswerEntity : answers) {
+				if (sessionAnswerEntity.getQuestionId() == answerEntity.getQuestion().getQuestionId()) {
+					exist = true;
+				}
+			}
+
+			// Informa la respuesta
+			if (!exist) {
+				SessionAnswerEntity sessionAnswer = new SessionAnswerEntity();
+				sessionAnswer.setSessionCuestionary(sessionQuestionaryEntity);
+				sessionAnswer.setQuestionaryId(answerEntity.getQuestion().getQuestionary().getQuestionaryId());
+				sessionAnswer.setQuestionId(answerEntity.getQuestion().getQuestionId());
+				sessionAnswer.setAnswerId(answerId);
+				
+				sessionAnswer = sessionAnswerRepository.save(sessionAnswer);
+			}
 			
 			// Verifica si es el último lo establece automáticamente
+			long numberAnswers = sessionAnswerRepository.countBySessionId(sessionQuestionaryEntity.getSessionId());
+			if (numberAnswers == answerEntity.getQuestion().getQuestionary().getQuestions().size()) {
+				sessionQuestionaryEntity.setFinished(true);
+				sessionQuestionaryRepository.save(sessionQuestionaryEntity);
+			}
 			
 			model = (SessionQuestionaryModel) sessionQuestionaryConverter.toModel(sessionQuestionaryEntity);
 		}
