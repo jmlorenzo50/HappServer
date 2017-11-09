@@ -131,9 +131,7 @@ public class DeviceService {
 			}
 		}
 		
-		
-		DeviceModel deviceModel = (DeviceModel) deviceConverter.toModel(deviceEntity);
-		return deviceModel;
+		return (DeviceModel) deviceConverter.toModel(deviceEntity);
 	}
 	
 	/**

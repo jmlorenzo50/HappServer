@@ -32,7 +32,7 @@ public class EnvirotmentService {
 	 * @return the all questionaries
 	 */
 	public List<EducationLevelModel> getAllEducationLevel() {
-		List<EducationLevelModel> data = new ArrayList<EducationLevelModel>();
+		List<EducationLevelModel> data = new ArrayList<>();
 		List<EducationLevelEntity> le = educationLevelRepository.findAllByOrderByOrderedAsc();
 		for (EducationLevelEntity educationLevelEntity : le) {
 			EducationLevelModel model = (EducationLevelModel) educationLevelConverter.toModel(educationLevelEntity);

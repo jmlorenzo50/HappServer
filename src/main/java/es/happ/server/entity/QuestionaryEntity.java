@@ -35,7 +35,7 @@ public class QuestionaryEntity implements HappEntity{
 	/** The questions. */
 	@OneToMany(fetch = javax.persistence.FetchType.LAZY, mappedBy="questionary")
 	@OrderBy("questionId")
-	private List<QuestionEntity> questions = new ArrayList<QuestionEntity>();
+	private List<QuestionEntity> questions = new ArrayList<>();
 	
 	/** The statement. */
 	@Column(name="scheduled_pre")

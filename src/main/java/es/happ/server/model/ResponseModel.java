@@ -4,7 +4,6 @@ import java.util.List;
 
 import es.happ.server.types.TypeResponse;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ResponseModel.
  */

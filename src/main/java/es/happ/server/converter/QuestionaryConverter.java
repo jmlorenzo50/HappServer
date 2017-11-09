@@ -37,7 +37,7 @@ public class QuestionaryConverter implements HappConverter{
 		entity.setDescription(questionaryModel.getDescription());
 		entity.setStatement(questionaryModel.getStatement());
 		
-		List<QuestionEntity> questions = new ArrayList<QuestionEntity>();
+		List<QuestionEntity> questions = new ArrayList<>();
 		List<QuestionModel> lq = questionaryModel.getQuestions();
 		for (QuestionModel questionModel : lq) {
 			QuestionEntity qe = (QuestionEntity) questionConverter.toEntity(questionModel);
@@ -61,7 +61,7 @@ public class QuestionaryConverter implements HappConverter{
 		model.setDescription(questionaryEntity.getDescription());
 		model.setStatement(questionaryEntity.getStatement());
 		
-		List<QuestionModel> questions = new ArrayList<QuestionModel>();
+		List<QuestionModel> questions = new ArrayList<>();
 		List<QuestionEntity> lq = questionaryEntity.getQuestions();
 		for (QuestionEntity answerEntity : lq) {
 			QuestionModel qm = (QuestionModel) questionConverter.toModel(answerEntity);

@@ -8,14 +8,11 @@ import es.happ.server.model.HappModel;
 
 /**
  * The Class QuestionaryConverter.
+ * @version 1.0
+ * @author jorge
  */
 @Component("sessionQuestionaryConverter")
 public class SessionQuestionaryConverter implements HappConverter{
-	/*
-	@Autowired
-	@Qualifier("questionConverter")
-	private QuestionConverter questionConverter;
-	*/
 
 	/**
 	 * To entity.
@@ -31,15 +28,6 @@ public class SessionQuestionaryConverter implements HappConverter{
 		entity.setDateSession(sessionQuestionaryModel.getDateSession());
 		entity.setFinished(sessionQuestionaryModel.getFinished());
 		
-		/*
-		Set<QuestionEntity> questions = new HashSet<QuestionEntity>();
-		Set<QuestionModel> lq = sessionQuestionaryModel.getQuestions();
-		for (QuestionModel questionModel : lq) {
-			QuestionEntity qe = (QuestionEntity) questionConverter.toEntity(questionModel);
-			qe.setQuestionary(entity);
-			questions.add(qe);
-		}
-		entity.setQuestions(questions);*/
 		return entity;
 	}
 
@@ -57,15 +45,6 @@ public class SessionQuestionaryConverter implements HappConverter{
 		model.setDateSession(sessionQuestionaryEntity.getDateSession());
 		model.setFinished(sessionQuestionaryEntity.getFinished());
 		
-		/*
-		Set<QuestionModel> questions = new HashSet<QuestionModel>();
-		Set<QuestionEntity> lq = sessionQuestionaryEntity.getQuestions();
-		for (QuestionEntity answerEntity : lq) {
-			QuestionModel qm = (QuestionModel) questionConverter.toModel(answerEntity);
-			questions.add(qm);
-		}
-		model.setQuestions(questions);
-		*/
 		return model;
 	}
 

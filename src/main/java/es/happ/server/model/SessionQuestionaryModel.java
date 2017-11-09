@@ -23,7 +23,7 @@ public class SessionQuestionaryModel implements HappModel{
 	private Boolean finished;
 	
 	/** The session answers. */
-	private Set<SessionAnswerModel> sessionAnswers = new HashSet<SessionAnswerModel>();
+	private Set<SessionAnswerModel> sessionAnswers = new HashSet<>();
 	
 
 	/**

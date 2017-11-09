@@ -44,7 +44,7 @@ public class QuestionEntity implements HappEntity {
 	/** The answers. */
 	@OneToMany(fetch = javax.persistence.FetchType.LAZY, mappedBy="question")
 	@OrderBy("answerId ASC")
-	private List<AnswerEntity> answers = new ArrayList<AnswerEntity>();
+	private List<AnswerEntity> answers = new ArrayList<>();
 
 	
 	/**

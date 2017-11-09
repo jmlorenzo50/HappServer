@@ -18,7 +18,7 @@ public class QuestionaryModel implements HappModel{
 	private String statement;
 	
 	/** The questions. */
-	private List<QuestionModel> questions = new ArrayList<QuestionModel>();
+	private List<QuestionModel> questions = new ArrayList<>();
 
 
 	/**

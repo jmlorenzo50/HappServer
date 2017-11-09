@@ -1,9 +1,7 @@
 package es.happ.server.model;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * The Class QuestionModel.
@@ -20,7 +18,7 @@ public class QuestionModel implements HappModel {
 	private String statement;
 	
 	/** The answers. */
-	private List<AnswerModel> answers = new ArrayList<AnswerModel>();
+	private List<AnswerModel> answers = new ArrayList<>();
 
 	
 	/**

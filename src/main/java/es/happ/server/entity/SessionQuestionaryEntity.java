@@ -38,7 +38,7 @@ public class SessionQuestionaryEntity implements HappEntity{
 	
 	/** The session answers. */
 	@OneToMany(fetch = javax.persistence.FetchType.LAZY, mappedBy="sessionCuestionary")
-	private Set<SessionAnswerEntity> sessionAnswers = new HashSet<SessionAnswerEntity>();
+	private Set<SessionAnswerEntity> sessionAnswers = new HashSet<>();
 	
 
 	/**

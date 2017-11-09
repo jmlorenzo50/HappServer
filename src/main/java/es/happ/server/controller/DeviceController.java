@@ -16,9 +16,10 @@ import es.happ.server.types.MaritalStatus;
 import es.happ.server.types.MessagesConstans;
 import es.happ.server.types.TypeResponse;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class DeviceController.
+ * @version 1.0
+ * @author jorge
  */
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping("/happ/device")
@@ -49,7 +50,7 @@ public class DeviceController {
 			data.setTypeResponse(TypeResponse.ERROR);
 			data.setError(MessagesConstans.ERROR_DEVICE_NOT_FOUND);
 		}
-		return new ResponseEntity<ResponseModel>(data, HttpStatus.OK);
+		return new ResponseEntity<>(data, HttpStatus.OK);
 	}
 	
 
@@ -78,7 +79,7 @@ public class DeviceController {
 				data.setError(MessagesConstans.ERROR_DEVICE_NOT_ADD);
 			}
 		}
-		return new ResponseEntity<ResponseModel>(data, HttpStatus.OK);
+		return new ResponseEntity<>(data, HttpStatus.OK);
 	}
 	
 	/**
@@ -118,7 +119,7 @@ public class DeviceController {
 				data.setError(MessagesConstans.ERROR_DEVICE_NOT_UPDATE);
 			}
 		}
-		return new ResponseEntity<ResponseModel>(data, HttpStatus.OK);
+		return new ResponseEntity<>(data, HttpStatus.OK);
 	}
 	
 	

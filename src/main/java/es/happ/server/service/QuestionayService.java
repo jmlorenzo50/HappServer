@@ -74,7 +74,7 @@ public class QuestionayService {
 	 * @return the all questionaries
 	 */
 	public List<QuestionaryModel> getAllQuestionaries() {
-		List<QuestionaryModel> data = new ArrayList<QuestionaryModel>();
+		List<QuestionaryModel> data = new ArrayList<>();
 		List<QuestionaryEntity> lq = questionaryRepository.findAll();
 		for (QuestionaryEntity questionaryEntity : lq) {
 			QuestionaryModel model = (QuestionaryModel) questionaryConverter.toModel(questionaryEntity);
@@ -101,7 +101,7 @@ public class QuestionayService {
 				entity.setAndroidId(androidId);
 				entity = sessionQuestionaryRepository.save(entity);
 			}
-			model = (SessionQuestionaryModel) sessionQuestionaryConverter.toModel(entity);;
+			model = (SessionQuestionaryModel) sessionQuestionaryConverter.toModel(entity);
 		}
 		return model;
 	}
@@ -171,7 +171,7 @@ public class QuestionayService {
 
 		DeviceEntity deviceEntity = deviceRepository.findByandroidId(androidId);
 		SessionQuestionaryEntity sessionQuestionaryEntity = sessionQuestionaryRepository.findBySessionId(sessionAnswerId);
-		AnswerEntity answerEntity = answerRepository.findByAnswerId(answerId);;
+		AnswerEntity answerEntity = answerRepository.findByAnswerId(answerId);
 		if (deviceEntity == null) {
 			model = null;
 		} else if (sessionQuestionaryEntity == null) {
@@ -197,7 +197,7 @@ public class QuestionayService {
 				sessionAnswer.setQuestionId(answerEntity.getQuestion().getQuestionId());
 				sessionAnswer.setAnswerId(answerId);
 				
-				sessionAnswer = sessionAnswerRepository.save(sessionAnswer);
+				sessionAnswerRepository.save(sessionAnswer);
 			}
 			
 			// Verifica si es el último lo establece automáticamente
