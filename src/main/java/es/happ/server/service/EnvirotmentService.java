@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 import es.happ.server.converter.EducationLevelConverter;
 import es.happ.server.entity.EducationLevelEntity;
 import es.happ.server.model.EducationLevelModel;
-import es.happ.server.repositoy.EducationLevelRepository;
+import es.happ.server.repository.EducationLevelRepository;
 
 /**
- * The Class QuestionayService.
+ * The Class EnvirotmentService.
  */
 @Service("envirotmentService")
 public class EnvirotmentService {

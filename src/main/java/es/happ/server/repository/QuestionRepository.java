@@ -1,4 +1,4 @@
-package es.happ.server.repositoy;
+package es.happ.server.repository;
 
 import java.io.Serializable;
 

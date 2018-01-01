@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import es.happ.server.model.DeviceModel;
-import es.happ.server.model.ResponseModel;
+import es.happ.server.rest.response.HappDevice;
 import es.happ.server.service.DeviceService;
 import es.happ.server.types.Gender;
 import es.happ.server.types.MaritalStatus;
@@ -38,14 +38,14 @@ public class DeviceController {
 	 * @return the response entity
 	 */
 	@GetMapping("/search")
-	public ResponseEntity<ResponseModel> search(@RequestParam(name="id",required=true) String id) {
-		ResponseModel data = new ResponseModel();
+	public ResponseEntity<HappDevice> search(@RequestParam(name="id",required=true) String id) {
+		HappDevice data = new HappDevice();
 		
 		DeviceModel device = null; 
 		device = deviceService.searchDevice(id);
 		if (device != null) {
 			data.setTypeResponse(TypeResponse.OK);
-			data.setDeviceModel(device);
+			data.setDevice(device);
 		} else {
 			data.setTypeResponse(TypeResponse.ERROR);
 			data.setError(MessagesConstans.ERROR_DEVICE_NOT_FOUND);
@@ -61,19 +61,19 @@ public class DeviceController {
 	 * @return the response entity
 	 */
 	@GetMapping("/add")
-	public ResponseEntity<ResponseModel> add(@RequestParam(name="id",required=true) String id) {
-		ResponseModel data = new ResponseModel();
+	public ResponseEntity<HappDevice> add(@RequestParam(name="id",required=true) String id) {
+		HappDevice data = new HappDevice();
 		
 		DeviceModel device = deviceService.searchDevice(id);
 		if (device != null) {
 			data.setTypeResponse(TypeResponse.ERROR);
 			data.setError(MessagesConstans.ERROR_DEVICE_NOT_ADD_BECAUSE_EXIST);
-			data.setDeviceModel(device);
+			data.setDevice(device);
 		} else {
 			device = deviceService.addDevice(id);
 			if (device != null) {
 				data.setTypeResponse(TypeResponse.OK);
-				data.setDeviceModel(device);
+				data.setDevice(device);
 			} else {
 				data.setTypeResponse(TypeResponse.ERROR);
 				data.setError(MessagesConstans.ERROR_DEVICE_NOT_ADD);
@@ -91,19 +91,19 @@ public class DeviceController {
 	 * @return the response entity
 	 */
 	@GetMapping("/update")
-	public ResponseEntity<ResponseModel> add(
+	public ResponseEntity<HappDevice> add(
 						@RequestParam(name="id",required=true) String id,
 						@RequestParam(name="age",required=true) int age,
 						@RequestParam(name="gender",required=true) String gender,
 						@RequestParam(name="maritalstatus",required=true) String maritalStatus,
 						@RequestParam(name="codeEducationLevel",required=true) String codeEducationLevel) {
-		ResponseModel data = new ResponseModel();
+		HappDevice data = new HappDevice();
 		
 		DeviceModel device = deviceService.searchDevice(id);
 		if (device == null) {
 			data.setTypeResponse(TypeResponse.ERROR);
 			data.setError(MessagesConstans.ERROR_DEVICE_NOT_FOUND);
-			data.setDeviceModel(device);
+			data.setDevice(device);
 		} else {
 			device = deviceService.updateDevice(id, 
 												age, 
@@ -113,7 +113,7 @@ public class DeviceController {
 			
 			if (device != null) {
 				data.setTypeResponse(TypeResponse.OK);
-				data.setDeviceModel(device);
+				data.setDevice(device);
 			} else {
 				data.setTypeResponse(TypeResponse.ERROR);
 				data.setError(MessagesConstans.ERROR_DEVICE_NOT_UPDATE);
@@ -130,11 +130,11 @@ public class DeviceController {
 	 * @return the response model
 	 */
 	@GetMapping("/hasScheduledTask")
-	public ResponseModel hasScheduledTask(@RequestParam(name="id",required=true) String androidId) {
-		ResponseModel data = new ResponseModel();
+	public ResponseEntity<HappDevice> hasScheduledTask(@RequestParam(name="id",required=true) String androidId) {
+		HappDevice data = new HappDevice();
 		data.setTypeResponse(TypeResponse.OK);
 		data.setHasScheduledTask(deviceService.hasScheduledTask(androidId));
-		return data;
+		return new ResponseEntity<>(data, HttpStatus.OK);
 	}
 	
 	

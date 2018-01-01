@@ -7,7 +7,7 @@ import es.happ.server.types.TypeResponse;
 /**
  * The Class ResponseModel.
  */
-public class ResponseModel implements HappModel{
+public class HappQuestionary implements HappModel{
 	
 	/** The type response. */
 	private TypeResponse typeResponse;
@@ -22,10 +22,10 @@ public class ResponseModel implements HappModel{
 	private List<QuestionaryModel> questionary; 
 	
 	/** The session questionary. */
-	private SessionQuestionaryModel sessionQuestionary;
+	private ScheduledTaskQuestionaryModel sessionQuestionary;
 	
 	/** The first session questionary. */
-	private SessionQuestionaryModel firstSessionQuestionary;
+	private ScheduledTaskQuestionaryModel firstSessionQuestionary;
 	
 	/** The has scheduled task. */
 	private Boolean hasScheduledTask;
@@ -111,7 +111,7 @@ public class ResponseModel implements HappModel{
 	 *
 	 * @return the session questionary
 	 */
-	public SessionQuestionaryModel getSessionQuestionary() {
+	public ScheduledTaskQuestionaryModel getSessionQuestionary() {
 		return sessionQuestionary;
 	}
 
@@ -120,7 +120,7 @@ public class ResponseModel implements HappModel{
 	 *
 	 * @param sessionQuestionary the new session questionary
 	 */
-	public void setSessionQuestionary(SessionQuestionaryModel sessionQuestionary) {
+	public void setSessionQuestionary(ScheduledTaskQuestionaryModel sessionQuestionary) {
 		this.sessionQuestionary = sessionQuestionary;
 	}
 
@@ -165,7 +165,7 @@ public class ResponseModel implements HappModel{
 	 *
 	 * @return the first session questionary
 	 */
-	public SessionQuestionaryModel getFirstSessionQuestionary() {
+	public ScheduledTaskQuestionaryModel getFirstSessionQuestionary() {
 		return firstSessionQuestionary;
 	}
 
@@ -174,7 +174,7 @@ public class ResponseModel implements HappModel{
 	 *
 	 * @param firstSessionQuestionary the new first session questionary
 	 */
-	public void setFirstSessionQuestionary(SessionQuestionaryModel firstSessionQuestionary) {
+	public void setFirstSessionQuestionary(ScheduledTaskQuestionaryModel firstSessionQuestionary) {
 		this.firstSessionQuestionary = firstSessionQuestionary;
 	}
 

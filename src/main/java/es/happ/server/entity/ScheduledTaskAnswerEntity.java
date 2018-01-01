@@ -11,21 +11,23 @@ import javax.persistence.Table;
 
 /**
  * The Class SessionAnswer.
+ * @author jorge
+ * @version 1.0
  */
 @Entity
-@Table(name="session_answer")
-public class SessionAnswerEntity  implements HappEntity{
+@Table(name="scheduled_task_answer")
+public class ScheduledTaskAnswerEntity  implements HappEntity{
 	
 	/** The session answer id. */
 	@Id
 	@GeneratedValue
-	@Column(name="session_answer_id", nullable=false, unique=true)
-	private Long sessionAnswerId;
+	@Column(name="scheduled_task_answer_id", nullable=false, unique=true)
+	private Long scheduledTaskAnswerId;
 	
-	/** The session cuestionary. */
+	/** The scheduled task id. */
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="sessionId", nullable = false)
-	private SessionQuestionaryEntity sessionCuestionary;
+	@JoinColumn(name="scheduledTaskQuestionaryId", nullable = false)
+	private ScheduledTaskQuestionaryEntity scheduledTaskQuestionary;
 	
 	/** The questionary id. */
 	@Column(name="questionary_id", nullable=false)
@@ -42,45 +44,10 @@ public class SessionAnswerEntity  implements HappEntity{
 	/**
 	 * Instantiates a new session answer.
 	 */
-	public SessionAnswerEntity() {
+	public ScheduledTaskAnswerEntity() {
 		super();
 	}
 
-	/**
-	 * Gets the session answer id.
-	 *
-	 * @return the session answer id
-	 */
-	public Long getSessionAnswerId() {
-		return sessionAnswerId;
-	}
-
-	/**
-	 * Sets the session answer id.
-	 *
-	 * @param sessionAnswerId the new session answer id
-	 */
-	public void setSessionAnswerId(Long sessionAnswerId) {
-		this.sessionAnswerId = sessionAnswerId;
-	}
-
-	/**
-	 * Gets the session cuestionary.
-	 *
-	 * @return the session cuestionary
-	 */
-	public SessionQuestionaryEntity getSessionCuestionary() {
-		return sessionCuestionary;
-	}
-
-	/**
-	 * Sets the session cuestionary.
-	 *
-	 * @param sessionCuestionary the new session cuestionary
-	 */
-	public void setSessionCuestionary(SessionQuestionaryEntity sessionCuestionary) {
-		this.sessionCuestionary = sessionCuestionary;
-	}
 
 	/**
 	 * Gets the questionary id.
@@ -134,6 +101,44 @@ public class SessionAnswerEntity  implements HappEntity{
 	 */
 	public void setAnswerId(Long answerId) {
 		this.answerId = answerId;
+	}
+
+	/**
+	 * Gets the scheduled task questionary entity.
+	 *
+	 * @return the scheduled task questionary entity
+	 */
+	public ScheduledTaskQuestionaryEntity getScheduledTaskQuestionary() {
+		return scheduledTaskQuestionary;
+	}
+
+	/**
+	 * Sets the scheduled task questionary entity.
+	 *
+	 * @param scheduledTaskQuestionaryEntity the new scheduled task questionary entity
+	 */
+	public void setScheduledTaskQuestionary(ScheduledTaskQuestionaryEntity scheduledTaskQuestionary) {
+		this.scheduledTaskQuestionary = scheduledTaskQuestionary;
+	}
+
+
+	/**
+	 * Gets the scheduled task answer id.
+	 *
+	 * @return the scheduled task answer id
+	 */
+	public Long getScheduledTaskAnswerId() {
+		return scheduledTaskAnswerId;
+	}
+
+
+	/**
+	 * Sets the scheduled task answer id.
+	 *
+	 * @param scheduledTaskAnswerId the new scheduled task answer id
+	 */
+	public void setScheduledTaskAnswerId(Long scheduledTaskAnswerId) {
+		this.scheduledTaskAnswerId = scheduledTaskAnswerId;
 	}
 	
 	

@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 @Component("dateUtil")
 public class DateUtil {
 	
-	
 	/**
 	 * Now.
 	 *
@@ -33,6 +32,20 @@ public class DateUtil {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(now());
 		cal.add(Calendar.MONTH, number);
+		return new Timestamp(cal.getTime().getTime());
+	}
+
+
+	/**
+	 * Now add month.
+	 *
+	 * @param number the number
+	 * @return the timestamp
+	 */
+	public Timestamp nowAddDay(int number) {
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(now());
+		cal.add(Calendar.DAY_OF_YEAR, number);
 		return new Timestamp(cal.getTime().getTime());
 	}
 

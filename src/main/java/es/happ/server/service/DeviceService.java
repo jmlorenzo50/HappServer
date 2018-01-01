@@ -15,11 +15,11 @@ import es.happ.server.entity.QuestionaryEntity;
 import es.happ.server.entity.ScheduledTaskEntity;
 import es.happ.server.entity.ScheduledTaskQuestionaryEntity;
 import es.happ.server.model.DeviceModel;
-import es.happ.server.repositoy.DeviceRepository;
-import es.happ.server.repositoy.EducationLevelRepository;
-import es.happ.server.repositoy.QuestionaryRepository;
-import es.happ.server.repositoy.ScheduledTaskQuestionaryRepository;
-import es.happ.server.repositoy.ScheduledTaskRepository;
+import es.happ.server.repository.DeviceRepository;
+import es.happ.server.repository.EducationLevelRepository;
+import es.happ.server.repository.QuestionaryRepository;
+import es.happ.server.repository.ScheduledTaskQuestionaryRepository;
+import es.happ.server.repository.ScheduledTaskRepository;
 import es.happ.server.types.Gender;
 import es.happ.server.types.MaritalStatus;
 import es.happ.server.types.TypeTask;
@@ -34,7 +34,6 @@ public class DeviceService {
 	@Autowired
 	@Qualifier("dateUtil")
 	private DateUtil dateUtil;
-
 	
 	/** The device repository. */
 	@Autowired
@@ -87,6 +86,10 @@ public class DeviceService {
 	 * @return the device model
 	 */
 	public DeviceModel addDevice(String id) {
+		if (searchDevice(id) != null) {
+			return null;
+		}
+		
 		DeviceEntity deviceEntity = new DeviceEntity();
 		deviceEntity.setAndroidId(id);
 		deviceEntity.setGender(Gender.NONE.name());

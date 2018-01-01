@@ -4,10 +4,10 @@ package es.happ.server.model;
 /**
  * The Class SessionAnswer.
  */
-public class SessionAnswerModel  implements HappModel{
+public class ScheduledTaskAnswerModel  implements HappModel{
 	
-	/** The session answer id. */
-	private Long sessionAnswerId;
+	/** The scheduled task answer id. */
+	private Long scheduledTaskAnswerId;
 	
 	/** The questionary id. */
 	private Long questionaryId;
@@ -21,27 +21,10 @@ public class SessionAnswerModel  implements HappModel{
 	/**
 	 * Instantiates a new session answer.
 	 */
-	public SessionAnswerModel() {
+	public ScheduledTaskAnswerModel() {
 		super();
 	}
 
-	/**
-	 * Gets the session answer id.
-	 *
-	 * @return the session answer id
-	 */
-	public Long getSessionAnswerId() {
-		return sessionAnswerId;
-	}
-
-	/**
-	 * Sets the session answer id.
-	 *
-	 * @param sessionAnswerId the new session answer id
-	 */
-	public void setSessionAnswerId(Long sessionAnswerId) {
-		this.sessionAnswerId = sessionAnswerId;
-	}
 
 	/**
 	 * Gets the questionary id.
@@ -96,7 +79,27 @@ public class SessionAnswerModel  implements HappModel{
 	public void setAnswerId(Long answerId) {
 		this.answerId = answerId;
 	}
-	
-	
+
+
+	/**
+	 * Gets the scheduled task answer id.
+	 *
+	 * @return the scheduled task answer id
+	 */
+	public Long getScheduledTaskAnswerId() {
+		return scheduledTaskAnswerId;
+	}
+
+
+	/**
+	 * Sets the scheduled task answer id.
+	 *
+	 * @param scheduledTaskAnswerId the new scheduled task answer id
+	 */
+	public void setScheduledTaskAnswerId(Long scheduledTaskAnswerId) {
+		this.scheduledTaskAnswerId = scheduledTaskAnswerId;
+	}
+
+
 
 }

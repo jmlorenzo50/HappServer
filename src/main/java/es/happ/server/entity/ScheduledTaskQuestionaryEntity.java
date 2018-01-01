@@ -1,6 +1,8 @@
 package es.happ.server.entity;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,13 +11,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 /**
  * The Class ScheduledTaskQuestionaryEntity.
  */
 @Entity
-@Table(name="scheduledTaskQuestionaryEntity")
+@Table(name="scheduled_task_questionary")
 public class ScheduledTaskQuestionaryEntity implements HappEntity{
 	
 	/** The scheduled task id. */
@@ -37,6 +41,11 @@ public class ScheduledTaskQuestionaryEntity implements HappEntity{
 	/** The finished date. */
 	@Column(name="finished_date", nullable=true)
 	private Timestamp finishedDate;
+	
+	/** The answers. */
+	@OneToMany(fetch = javax.persistence.FetchType.LAZY, mappedBy="scheduledTaskQuestionary")
+	@OrderBy("scheduledTaskAnswerId ASC")
+	private List<ScheduledTaskAnswerEntity> scheduledTaskAnswer = new ArrayList<>();
 
 	/**
 	 * Instantiates a new scheduled task questionary entity.
@@ -115,6 +124,24 @@ public class ScheduledTaskQuestionaryEntity implements HappEntity{
 	 */
 	public void setFinishedDate(Timestamp finishedDate) {
 		this.finishedDate = finishedDate;
+	}
+
+	/**
+	 * Gets the scheduled task answer.
+	 *
+	 * @return the scheduled task answer
+	 */
+	public List<ScheduledTaskAnswerEntity> getScheduledTaskAnswer() {
+		return scheduledTaskAnswer;
+	}
+
+	/**
+	 * Sets the scheduled task answer.
+	 *
+	 * @param scheduledTaskAnswer the new scheduled task answer
+	 */
+	public void setScheduledTaskAnswer(List<ScheduledTaskAnswerEntity> scheduledTaskAnswer) {
+		this.scheduledTaskAnswer = scheduledTaskAnswer;
 	}
 
 }
