@@ -48,5 +48,16 @@ public class DateUtil {
 		cal.add(Calendar.DAY_OF_YEAR, number);
 		return new Timestamp(cal.getTime().getTime());
 	}
+	
+	/**
+	 * Get the last minut of the day
+	 * @param day
+	 * @param month
+	 * @param year
+	 * @return
+	 */
+	public Timestamp getInstance(int day, int month, int year) {
+		return Timestamp.valueOf(year + "-" + month + "-" + day + " 23:59:59.9");
+	}
 
 }
