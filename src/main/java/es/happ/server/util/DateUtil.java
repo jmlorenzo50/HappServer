@@ -57,7 +57,65 @@ public class DateUtil {
 	 * @return
 	 */
 	public Timestamp getInstance(int day, int month, int year) {
-		return Timestamp.valueOf(year + "-" + month + "-" + day + " 23:59:59.9");
+		String sday = day + "";
+		if (day < 10) {
+			sday = "0" + day;
+		}
+		String smonth = month + "";
+		if (month < 10) {
+			smonth = "0" + month;
+		}
+
+		return Timestamp.valueOf(year + "-" + smonth + "-" + sday + " 23:59:59.9");
 	}
+
+
+	/**
+	 * Add number days to day
+	 * @param valuation_date
+	 * @param number
+	 * @return
+	 */
+	public Timestamp dayAddDay(Timestamp valuation_date, int number) {
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(valuation_date);
+		cal.add(Calendar.DAY_OF_YEAR, number);
+		return new Timestamp(cal.getTime().getTime());
+	}
+	
+	
+    /**
+     * Obtiene el día
+     * @param timestamp
+     * @return
+     */
+    public int getDay(Timestamp timestamp) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(timestamp.getTime());
+        return cal.get(Calendar.DAY_OF_MONTH);
+    }
+
+    /**
+     * Obtiene el mes
+     * @param timestamp
+     * @return
+     */
+    public int getMonth(Timestamp timestamp) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(timestamp.getTime());
+        return cal.get(Calendar.MONTH) + 1;
+    }
+
+    /**
+     * Obtiene el año
+     * @param timestamp
+     * @return
+     */
+    public int getYear(Timestamp timestamp) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(timestamp.getTime());
+        return cal.get(Calendar.YEAR);
+    }
+	
 
 }
