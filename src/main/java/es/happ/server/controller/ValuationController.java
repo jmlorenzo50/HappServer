@@ -1,6 +1,8 @@
 package es.happ.server.controller;
 
+import java.nio.charset.StandardCharsets;
 import java.sql.Timestamp;
+import java.util.Base64;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -49,5 +51,45 @@ public class ValuationController {
 		data.setValuationModels(valuationService.list(androidId, valuation_date));
 		return new ResponseEntity<>(data, HttpStatus.OK);
 	}
+	
+	
+	@GetMapping("/wellness/{valueGood}/{valueBad}")
+	public ResponseEntity<HappValuation> wellness(@RequestParam(name="id",         required=true) String androidId, 
+			                                      @PathVariable(name="valueGood",  required=true) int valueGood, 
+			                                      @PathVariable(name="valueBad",   required=true) int valueBad
+			
+			) {
+		
+		Timestamp timestamp = dateUtil.now();
+		
+		HappValuation data = new HappValuation();
+		data.setTypeResponse(TypeResponse.OK);
+		if (!valuationService.wellness(androidId, timestamp, valueGood, valueBad)) {
+			data.setTypeResponse(TypeResponse.ERROR);
+		}
+		return new ResponseEntity<>(data, HttpStatus.OK);
+	}
+	
+	
+
+	@GetMapping("/add")
+	public ResponseEntity<HappValuation> wellness(@RequestParam(name="id",    required=true) String androidId, 
+												  @RequestParam(name="text",  required=true) String text
+			) {
+		Timestamp timestamp = dateUtil.now();
+		
+		HappValuation data = new HappValuation();
+		data.setTypeResponse(TypeResponse.OK);
+		
+		byte[] data64 = Base64.getDecoder().decode(text);
+		String baseNormal = new String(data64);
+
+		if (!valuationService.add(androidId, timestamp, baseNormal)) {
+			data.setTypeResponse(TypeResponse.ERROR);
+		}
+		return new ResponseEntity<>(data, HttpStatus.OK);
+	}
+	
+	
 	
 }

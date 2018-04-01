@@ -37,7 +37,8 @@ http://127.0.0.1:8080/happ/questionary/session/answer?id=6244f1aa4ef72ab5&sessio
 # Valuation    #
 ################
 http://127.0.0.1:8080/happ/valuation/list/21/01/2018?id=6244f1aa4ef72ab5
-
+http://127.0.0.1:8080/happ/valuation/wellness/8/3?id=6244f1aa4ef72ab5
+http://127.0.0.1:8080/happ/valuation/add/?id=6244f1aa4ef72ab5&text=holamundo
 
 
 
