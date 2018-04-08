@@ -117,7 +117,11 @@ public class QuestionaryService {
 					&& scheduledTaskEntity.getFinishedDate() == null) {
 				List<ScheduledTaskQuestionaryEntity> list = scheduledTaskQuestionaryRepository.findByScheduledTaskOrderByScheduledTaskQuestionaryIdAsc(scheduledTaskEntity);
 				if (list != null && !list.isEmpty()) {
-					model = (ScheduledTaskQuestionaryModel) scheduledTaskQuestionaryConverter.toModel(list.get(0));
+					for (ScheduledTaskQuestionaryEntity scheduledTaskQuestionaryEntity : list) {
+						if (model == null && scheduledTaskQuestionaryEntity.getFinishedDate() == null) {
+							model = (ScheduledTaskQuestionaryModel) scheduledTaskQuestionaryConverter.toModel(scheduledTaskQuestionaryEntity);		
+						}
+					}
 				}
 			}
 		}
@@ -190,7 +194,7 @@ public class QuestionaryService {
 			}
 			
 			ScheduledTaskEntity scheduledTask = scheduledTaskQuestionaryEntity.getScheduledTask();
-			if (scheduledTaskRepository.isAllQuestionaryFinish(scheduledTask)) {
+			if (scheduledTaskRepository.isAllQuestionaryFinish(androidId, scheduledTask.getScheduledTaskId())) {
 				scheduledTask.setFinishedDate(dateUtil.now());
 				scheduledTaskRepository.save(scheduledTask);
 				scheduledTaskRepository.flush();

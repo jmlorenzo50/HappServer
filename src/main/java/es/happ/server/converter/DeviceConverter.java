@@ -38,6 +38,7 @@ public class DeviceConverter implements HappConverter{
 		entity.setGender(deviceModel.getGender().name());
 		entity.setAge(deviceModel.getAge());
 		entity.setDateInsert(deviceModel.getDateInsert());
+		entity.setGroup(deviceModel.getGroup());
 		if (deviceModel.getMaritalStatus() != null) {
 			entity.setMaritalStatus(deviceModel.getMaritalStatus().name());
 		}
@@ -60,6 +61,7 @@ public class DeviceConverter implements HappConverter{
 		model.setGender(Gender.valueOf(deviceEntity.getGender()));
 		model.setAge(deviceEntity.getAge());
 		model.setDateInsert(deviceEntity.getDateInsert());
+		model.setGroup(deviceEntity.getGroup());
 		if (deviceEntity.getMaritalStatus() != null) {
 			model.setMaritalStatus(MaritalStatus.valueOf(deviceEntity.getMaritalStatus()));
 		}

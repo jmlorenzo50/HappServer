@@ -2,7 +2,9 @@ package es.happ.server.service;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,6 +17,7 @@ import es.happ.server.entity.QuestionaryEntity;
 import es.happ.server.entity.ScheduledTaskEntity;
 import es.happ.server.entity.ScheduledTaskQuestionaryEntity;
 import es.happ.server.model.DeviceModel;
+import es.happ.server.model.GroupModel;
 import es.happ.server.repository.DeviceRepository;
 import es.happ.server.repository.EducationLevelRepository;
 import es.happ.server.repository.QuestionaryRepository;
@@ -22,6 +25,7 @@ import es.happ.server.repository.ScheduledTaskQuestionaryRepository;
 import es.happ.server.repository.ScheduledTaskRepository;
 import es.happ.server.types.Gender;
 import es.happ.server.types.MaritalStatus;
+import es.happ.server.types.TypeGroup;
 import es.happ.server.types.TypeTask;
 import es.happ.server.util.DateUtil;
 
@@ -95,6 +99,7 @@ public class DeviceService {
 		deviceEntity.setGender(Gender.NONE.name());
 		deviceEntity.setAge(-1);
 		deviceEntity.setDateInsert(new Timestamp(new Date().getTime()));
+		deviceEntity.setGroup(this.nextGroup());
 		deviceRepository.save(deviceEntity);
 		
 		
@@ -183,6 +188,46 @@ public class DeviceService {
 			}
 		}
 		return hasScheduledTask;
+	}
+	
+	/**
+	 * Get the next code group
+	 * @return the next code group
+	 */
+	private String nextGroup() {
+		HashMap<String, Long> allGroups = new HashMap<>(); 
+		TypeGroup[] value = TypeGroup.values();
+		for (TypeGroup typeGroup : value) {
+			allGroups.put(typeGroup.name(), new Long(0));
+		}
+		
+		String exitGroup = null;
+		List<GroupModel> groups = deviceRepository.listGroups();
+		for (GroupModel group : groups) {
+			if (group.getCodeGroup() != null && group.getCodeGroup().trim().length() > 0) {
+				allGroups.put(group.getCodeGroup(), group.getCountGroup());
+			}
+		}
+	
+		Set<String> setGroups = allGroups.keySet();
+		GroupModel memGroup = null;
+		for (String key : setGroups) {
+			if (memGroup == null) {
+				memGroup = new GroupModel();;
+				memGroup.setCodeGroup(key);
+				memGroup.setCountGroup(allGroups.get(key));
+			} else {
+				if (memGroup.getCountGroup() > allGroups.get(key)) {
+					memGroup = new GroupModel();;
+					memGroup.setCodeGroup(key);
+					memGroup.setCountGroup(allGroups.get(key));
+				}
+			}
+		}
+		
+		exitGroup = memGroup.getCodeGroup();
+		
+		return exitGroup;
 	}
 	
 

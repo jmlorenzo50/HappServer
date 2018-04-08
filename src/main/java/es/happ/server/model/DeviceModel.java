@@ -8,7 +8,7 @@ import es.happ.server.types.MaritalStatus;
 /**
  * The Class DeviceModel.
  * @author jorge
- * @version 1.0
+ * @version 1.1
  */
 public class DeviceModel implements HappModel{
 	
@@ -29,6 +29,9 @@ public class DeviceModel implements HappModel{
 	
 	/** The education level model. */
 	private EducationLevelModel educationLevelModel;
+	
+	/** The group. */
+	private String group;
 	
 	/**
 	 * Instantiates a new device model.
@@ -156,6 +159,26 @@ public class DeviceModel implements HappModel{
 	public void setEducationLevelModel(EducationLevelModel educationLevelModel) {
 		this.educationLevelModel = educationLevelModel;
 	}
+
+	/**
+	 * Gets the group.
+	 *
+	 * @return the group
+	 */
+	public String getGroup() {
+		return group;
+	}
+
+	/**
+	 * Sets the group.
+	 *
+	 * @param group the new group
+	 */
+	public void setGroup(String group) {
+		this.group = group;
+	}
+	
+	
 	
 
 }

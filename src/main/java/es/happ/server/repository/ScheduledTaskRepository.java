@@ -17,7 +17,12 @@ public interface ScheduledTaskRepository extends JpaRepository<ScheduledTaskEnti
 
 	public abstract List<ScheduledTaskEntity> findByDeviceOrderByScheduledDateAsc(DeviceEntity device);
 
-	@Query("select count(a) > 0 from ScheduledTaskQuestionaryEntity a where a.scheduledTask = ?1 and a.finishedDate is null")
-	public abstract boolean isAllQuestionaryFinish(ScheduledTaskEntity scheduledTask);
+	@Query("select count(a) = 0 "
+			+ "from ScheduledTaskQuestionaryEntity a, ScheduledTaskEntity b "
+			+ "where b.device.androidId = ?1 "
+			+ "and a.scheduledTask.scheduledTaskId = b.scheduledTaskId "
+			+ "and a.scheduledTask.scheduledTaskId = ?2 "
+			+ "and a.finishedDate is null")
+	public abstract boolean isAllQuestionaryFinish(String androidId, Long scheduledTaskId);
 
 }

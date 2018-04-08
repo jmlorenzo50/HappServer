@@ -13,7 +13,7 @@ import javax.persistence.Table;
 /**
  * The Class DeviceEntity.
  * @author jorge
- * @version 1.0
+ * @version 1.1
  */
 @Entity
 @Table(name="device")
@@ -39,6 +39,11 @@ public class DeviceEntity implements HappEntity {
 	/** The marital status. */
 	@Column(name="marital_status", length=10, nullable=true)
 	private String maritalStatus;
+	
+	/** The marital status. */
+	@Column(name="group_device", length=1, nullable=true)
+	private String group;
+
 	
 	/** The education level. */
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -158,6 +163,24 @@ public class DeviceEntity implements HappEntity {
 	 */
 	public void setEducationLevel(EducationLevelEntity educationLevel) {
 		this.educationLevel = educationLevel;
+	}
+
+	/**
+	 * Gets the group.
+	 *
+	 * @return the group
+	 */
+	public String getGroup() {
+		return group;
+	}
+
+	/**
+	 * Sets the group.
+	 *
+	 * @param group the new group
+	 */
+	public void setGroup(String group) {
+		this.group = group;
 	}
 	
 	
