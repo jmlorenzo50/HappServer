@@ -1,7 +1,6 @@
 package es.happ.server;
 
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 
 import org.junit.BeforeClass;
@@ -14,13 +13,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-import es.happ.server.model.EducationLevelModel;
 import es.happ.server.model.ValuationModel;
-import es.happ.server.service.EnvirotmentService;
 import es.happ.server.service.ValuationService;
 import es.happ.server.util.DateUtil;
 
-// TODO: Auto-generated Javadoc
 /**
  * DeviceServiceTests.
  *
