@@ -225,7 +225,9 @@ public class DeviceService {
 			}
 		}
 		
-		exitGroup = memGroup.getCodeGroup();
+		if (memGroup != null) {
+			exitGroup = memGroup.getCodeGroup();
+		}
 		
 		return exitGroup;
 	}
