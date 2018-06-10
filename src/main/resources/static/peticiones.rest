@@ -4,11 +4,20 @@
 ################
 
 # Search
+http://127.0.0.1:8080/happ/device/add?id=6244f1aa4ef72ab5
+
+# Search
 http://127.0.0.1:8080/happ/device/search?id=6244f1aa4ef72ab5
 
 # Update 
 http://127.0.0.1:8080/happ/device/update?id=6244f1aa4ef72ab5&age=21&gender=WOMAN&maritalstatus=MARRIED&codeEducationLevel=BAS
 
+# hasScheduledTask
+http://127.0.0.1:8080/happ/device/hasScheduledTask?id=6244f1aa4ef72ab5
+
+# changeShowVideo
+http://127.0.0.1:8080/happ/device/changeShowVideo?id=6244f1aa4ef72ab5&videoAnswer=hijo&videoValue=7
+http://127.0.0.1:8080/happ/device/changeShowVideo?id=6244f1aa4ef72ab5&videoAnswer=probe&videoValue=7
 
 ################
 # Envirotment  #

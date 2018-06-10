@@ -1,0 +1,9 @@
+
+# Configurar POM
+spring.datasource.url = jdbc:mysql://139.99.44.79:3306/happ?useSSL=false
+spring.datasource.username = marta
+spring.datasource.password = marta
+
+
+# Desplegar
+mvn tomcat7:deploy -Dmaven.test.skip=true

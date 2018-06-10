@@ -10,4 +10,15 @@ public enum TypeGroup {
 	
 	D; // Text B and no Video
 
+	
+	public static boolean showVideo(String codeGroup) {
+		boolean salida = false;
+		
+		if (A.name().equals(codeGroup)) {
+			salida = true;
+		} else if (B.name().equals(codeGroup)) {
+			salida = true;
+		}
+		return salida;
+	}
 }

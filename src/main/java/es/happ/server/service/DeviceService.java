@@ -25,16 +25,19 @@ import es.happ.server.repository.ScheduledTaskQuestionaryRepository;
 import es.happ.server.repository.ScheduledTaskRepository;
 import es.happ.server.types.Gender;
 import es.happ.server.types.MaritalStatus;
+import es.happ.server.types.SystemConstans;
 import es.happ.server.types.TypeGroup;
 import es.happ.server.types.TypeTask;
 import es.happ.server.util.DateUtil;
 
 /**
  * The Class DeviceService.
+ * @version 1.2
  */
 @Service("deviceService")
 public class DeviceService {
 	
+	/** The date util. */
 	@Autowired
 	@Qualifier("dateUtil")
 	private DateUtil dateUtil;
@@ -59,10 +62,12 @@ public class DeviceService {
 	@Qualifier("scheduledTaskRepository")
 	private ScheduledTaskRepository scheduledTaskRepository;
 	
+	/** The scheduled task questionary repository. */
 	@Autowired
 	@Qualifier("scheduledTaskQuestionaryRepository")
 	private ScheduledTaskQuestionaryRepository scheduledTaskQuestionaryRepository;
 	
+	/** The education level repository. */
 	@Autowired
 	@Qualifier("educationLevelRepository")
 	private EducationLevelRepository educationLevelRepository;
@@ -191,10 +196,11 @@ public class DeviceService {
 	}
 	
 	/**
-	 * Get the next code group
+	 * Get the next code group.
+	 *
 	 * @return the next code group
 	 */
-	private String nextGroup() {
+	public String nextGroup() {
 		HashMap<String, Long> allGroups = new HashMap<>(); 
 		TypeGroup[] value = TypeGroup.values();
 		for (TypeGroup typeGroup : value) {
@@ -230,6 +236,25 @@ public class DeviceService {
 		}
 		
 		return exitGroup;
+	}
+	
+	
+	
+	/**
+	 * Change show video.
+	 */
+	public void changeShowVideo(String androidId, String videoAnswer, Long videoValue) {
+		DeviceEntity deviceEntity = deviceRepository.findByandroidId(androidId);
+		if (deviceEntity != null) {
+			String codeGroup = deviceEntity.getGroup();
+			if (TypeGroup.showVideo(codeGroup) && !SystemConstans.YES.equals(deviceEntity.getVideoView())) {
+				deviceEntity.setVideoView(SystemConstans.YES);
+				deviceEntity.setVideoAnswer(videoAnswer);
+				deviceEntity.setVideoValue(videoValue);
+				deviceRepository.save(deviceEntity);
+			}
+		}
+
 	}
 	
 

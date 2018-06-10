@@ -1,10 +1,15 @@
 package es.happ.server;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,9 +18,12 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import es.happ.server.model.DeviceModel;
+import es.happ.server.model.GroupModel;
+import es.happ.server.repository.DeviceRepository;
 import es.happ.server.service.DeviceService;
 import es.happ.server.types.Gender;
 import es.happ.server.types.MaritalStatus;
+import es.happ.server.types.TypeGroup;
 
 /**
  * DeviceServiceTests
@@ -162,5 +170,7 @@ public class DeviceServiceTests {
 		// THEN
 		Assert.isTrue(!hasScheduledTask, "The android device " + androidId + " has scheduled task ");
 	}
+	
+
 	
 }

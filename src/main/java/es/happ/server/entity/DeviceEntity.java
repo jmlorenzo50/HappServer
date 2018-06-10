@@ -13,7 +13,7 @@ import javax.persistence.Table;
 /**
  * The Class DeviceEntity.
  * @author jorge
- * @version 1.1
+ * @version 1.2
  */
 @Entity
 @Table(name="device")
@@ -44,6 +44,19 @@ public class DeviceEntity implements HappEntity {
 	@Column(name="group_device", length=1, nullable=true)
 	private String group;
 
+
+	/** The marital status. */
+	@Column(name="video_view", length=1, nullable=true)
+	private String videoView;
+
+	/** The video answer. */
+	@Column(name="video_answer", length=50, nullable=true)
+	private String videoAnswer;
+
+	/** The video value. */
+	@Column(name="video_value", nullable=true)
+	private Long videoValue;
+	
 	
 	/** The education level. */
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -181,6 +194,60 @@ public class DeviceEntity implements HappEntity {
 	 */
 	public void setGroup(String group) {
 		this.group = group;
+	}
+
+	/**
+	 * Gets the video view.
+	 *
+	 * @return the video view
+	 */
+	public String getVideoView() {
+		return videoView;
+	}
+
+	/**
+	 * Sets the video view.
+	 *
+	 * @param videoView the new video view
+	 */
+	public void setVideoView(String videoView) {
+		this.videoView = videoView;
+	}
+
+	/**
+	 * Gets the video answer.
+	 *
+	 * @return the video answer
+	 */
+	public String getVideoAnswer() {
+		return videoAnswer;
+	}
+
+	/**
+	 * Sets the video answer.
+	 *
+	 * @param videoAnswer the new video answer
+	 */
+	public void setVideoAnswer(String videoAnswer) {
+		this.videoAnswer = videoAnswer;
+	}
+
+	/**
+	 * Gets the video value.
+	 *
+	 * @return the video value
+	 */
+	public Long getVideoValue() {
+		return videoValue;
+	}
+
+	/**
+	 * Sets the video value.
+	 *
+	 * @param videoValue the new video value
+	 */
+	public void setVideoValue(Long videoValue) {
+		this.videoValue = videoValue;
 	}
 	
 	

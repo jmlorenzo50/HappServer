@@ -18,8 +18,9 @@ import es.happ.server.types.TypeResponse;
 
 /**
  * The Class DeviceController.
- * @version 1.0
+ *
  * @author jorge
+ * @version 1.2
  */
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping("/happ/device")
@@ -88,6 +89,8 @@ public class DeviceController {
 	 * @param id the id
 	 * @param age the age
 	 * @param gender the gender
+	 * @param maritalStatus the marital status
+	 * @param codeEducationLevel the code education level
 	 * @return the response entity
 	 */
 	@GetMapping("/update")
@@ -134,6 +137,24 @@ public class DeviceController {
 		HappDevice data = new HappDevice();
 		data.setTypeResponse(TypeResponse.OK);
 		data.setHasScheduledTask(deviceService.hasScheduledTask(androidId));
+		return new ResponseEntity<>(data, HttpStatus.OK);
+	}
+	
+	
+	/**
+	 * Change show video.
+	 *
+	 * @param androidId the android id
+	 * @return the response entity
+	 */
+	@GetMapping("/changeShowVideo")
+	public ResponseEntity<HappDevice> changeShowVideo(@RequestParam(name="id",required=true) String androidId, 
+													  @RequestParam(name="videoAnswer",required=true) String videoAnswer, 
+													  @RequestParam(name="videoValue",required=true) Long videoValue
+			) {
+		HappDevice data = new HappDevice();
+		data.setTypeResponse(TypeResponse.OK);
+		deviceService.changeShowVideo(androidId, videoAnswer, videoValue);
 		return new ResponseEntity<>(data, HttpStatus.OK);
 	}
 	

@@ -16,7 +16,7 @@ import es.happ.server.types.MaritalStatus;
 /**
  * The Class DeviceConverter.
  * @author jorge
- * @version 1.0
+ * @version 1.2
  */
 @Component("deviceConverter")
 public class DeviceConverter implements HappConverter{
@@ -39,6 +39,9 @@ public class DeviceConverter implements HappConverter{
 		entity.setAge(deviceModel.getAge());
 		entity.setDateInsert(deviceModel.getDateInsert());
 		entity.setGroup(deviceModel.getGroup());
+		entity.setVideoView(deviceModel.getVideoView());
+		entity.setVideoAnswer(deviceModel.getVideoAnswer());
+		entity.setVideoValue(deviceModel.getVideoValue());
 		if (deviceModel.getMaritalStatus() != null) {
 			entity.setMaritalStatus(deviceModel.getMaritalStatus().name());
 		}
@@ -62,6 +65,9 @@ public class DeviceConverter implements HappConverter{
 		model.setAge(deviceEntity.getAge());
 		model.setDateInsert(deviceEntity.getDateInsert());
 		model.setGroup(deviceEntity.getGroup());
+		model.setVideoView(deviceEntity.getVideoView());
+		model.setVideoAnswer(deviceEntity.getVideoAnswer());
+		model.setVideoValue(deviceEntity.getVideoValue());
 		if (deviceEntity.getMaritalStatus() != null) {
 			model.setMaritalStatus(MaritalStatus.valueOf(deviceEntity.getMaritalStatus()));
 		}
