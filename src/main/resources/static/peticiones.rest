@@ -3,10 +3,11 @@
 # Device       #
 ################
 
-# Search
+# Add
 http://127.0.0.1:8080/happ/device/add?id=6244f1aa4ef72ab5
 
 # Search
+http://139.99.44.79:8080/happ/device/search?id=6244f1aa4ef72ab5
 http://127.0.0.1:8080/happ/device/search?id=6244f1aa4ef72ab5
 
 # Update 

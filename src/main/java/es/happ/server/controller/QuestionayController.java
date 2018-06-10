@@ -18,7 +18,7 @@ import es.happ.server.types.MessagesConstans;
 import es.happ.server.types.TypeResponse;
 
 @org.springframework.web.bind.annotation.RestController
-@RequestMapping("/happ/questionary")
+@RequestMapping("/questionary")
 public class QuestionayController {
 	
 	@Autowired

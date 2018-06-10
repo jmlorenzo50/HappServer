@@ -13,7 +13,7 @@ import es.happ.server.service.EnvirotmentService;
 import es.happ.server.types.TypeResponse;
 
 @org.springframework.web.bind.annotation.RestController
-@RequestMapping("/happ/envirotment")
+@RequestMapping("/envirotment")
 public class EnvirotmentController {
 	
 	@Autowired

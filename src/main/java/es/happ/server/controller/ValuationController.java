@@ -20,7 +20,7 @@ import es.happ.server.types.TypeResponse;
 import es.happ.server.util.DateUtil;
 
 @org.springframework.web.bind.annotation.RestController
-@RequestMapping("/happ/valuation")
+@RequestMapping("/valuation")
 public class ValuationController {
 	
 	@Autowired

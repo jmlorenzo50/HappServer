@@ -23,7 +23,7 @@ import es.happ.server.types.TypeResponse;
  * @version 1.2
  */
 @org.springframework.web.bind.annotation.RestController
-@RequestMapping("/happ/device")
+@RequestMapping("/device")
 public class DeviceController {
 	
 	/** The device service. */
